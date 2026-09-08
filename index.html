@@ -141,8 +141,12 @@
 
   /* ---------- brands + discretion ---------- */
   .roster{background:var(--bg-2);border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
-  .brandgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;
+  /* fixed 4 across so a multiple of 4 brands fills every row with no dead
+     cell; auto-fit left a ragged 5+3 at desktop width */
+  .brandgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
     background:var(--line-2);border:1px solid var(--line-2);border-radius:16px;overflow:hidden}
+  @media (max-width:900px){ .brandgrid{grid-template-columns:repeat(3,1fr)} }
+  @media (max-width:620px){ .brandgrid{grid-template-columns:repeat(2,1fr)} }
   .brand{background:var(--bg-2);min-height:112px;padding:24px;display:flex;
     align-items:center;justify-content:center;text-align:center;
     font-family:Space Grotesk,sans-serif;font-weight:600;font-size:18px;
