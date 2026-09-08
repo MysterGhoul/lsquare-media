@@ -15,6 +15,24 @@
     --line:rgba(237,236,232,.10); --line-2:rgba(237,236,232,.06);
     --maxw:1120px;
   }
+  /* Parallax ground plane. Fixed and behind everything, so the grid drifts
+     slower than the page as you scroll and the content reads as a layer above
+     it. The grid is a repeating gradient, so it is panned by moving
+     background-position rather than translating a box - it tiles forever and
+     can never run out from under the viewport. */
+  .bg{position:fixed;inset:0;z-index:0;pointer-events:none;
+    --grid:rgba(237,236,232,.095);
+    background-image:linear-gradient(var(--grid) 1px,transparent 1px),
+      linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+    background-size:64px 64px;background-position:0 0;
+    -webkit-mask-image:radial-gradient(120% 90% at 50% 12%,#000,transparent 78%);
+    mask-image:radial-gradient(120% 90% at 50% 12%,#000,transparent 78%);
+    will-change:background-position}
+  /* content sits above the plane */
+  nav,main,footer{position:relative;z-index:1}
+  .trend{will-change:transform}
+  @media (prefers-reduced-motion:reduce){ .bg,.trend{will-change:auto} }
+
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{margin:0;background:var(--bg);color:var(--ink);
@@ -57,12 +75,6 @@
   .hero::before{content:"";position:absolute;inset:-40% 0 auto 50%;width:1200px;height:800px;
     transform:translateX(-50%);pointer-events:none;
     background:radial-gradient(50% 50% at 50% 50%, rgba(var(--accent-rgb),.13), rgba(var(--accent-rgb),0) 70%)}
-  .hero::after{content:"";position:absolute;inset:0;pointer-events:none;
-    background-image:linear-gradient(var(--line-2) 1px,transparent 1px),
-      linear-gradient(90deg,var(--line-2) 1px,transparent 1px);
-    background-size:64px 64px;
-    -webkit-mask-image:radial-gradient(70% 60% at 50% 30%,#000,transparent 75%);
-    mask-image:radial-gradient(70% 60% at 50% 30%,#000,transparent 75%)}
   .hero .wrap{position:relative;z-index:1}
   .livetag{display:inline-flex;align-items:center;gap:9px;
     font-family:Space Mono,monospace;font-size:11px;font-weight:700;letter-spacing:.16em;

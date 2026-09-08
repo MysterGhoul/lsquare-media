@@ -28,6 +28,8 @@
   </g>
 </defs></svg>
 
+<div class="bg" aria-hidden="true"></div>
+
 <nav>
   <div class="navin">
     <a class="lockup" href="#top" aria-label="LL Media home">
@@ -66,7 +68,7 @@
     <p class="countlabel">followers and counting across our creators.</p>
     <p class="countsub">Combined reach across every creator we represent, updating live.</p>
 
-    <h1>You make the work.<br><span class="hl">We run everything else.</span></h1>
+    <h1>You make the media.<br><span class="hl">We run everything else.</span></h1>
     <p class="herolede">LL Media is a creator management company. Since 2018 we have handled brand deals, negotiation, editing, posting strategy, storefronts and the business admin that eats your week &mdash; so the only thing left on your plate is the part you love most.</p>
     <div class="cta">
       <a class="btn" href="#apply">Apply to join the roster</a>
@@ -587,6 +589,34 @@
     });
   });
 
+})();
+</script>
+
+<script>
+(function(){
+  "use strict";
+  // Parallax: the ground plane pans at 45% of scroll, the trend line at 28%,
+  // so they separate from each other as well as from the content. Both are
+  // written inside one rAF tick - reading scrollY in the scroll handler and
+  // writing in the frame keeps it off the layout path.
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  var bg    = document.querySelector(".bg");
+  var trend = document.querySelector(".trend");
+  if (!bg && !trend) return;
+
+  var ticking = false;
+  function frame(){
+    var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+    if (bg)    bg.style.backgroundPosition = "0 " + (-y * 0.45).toFixed(1) + "px";
+    if (trend) trend.style.transform = "translate3d(0," + (y * 0.28).toFixed(1) + "px,0)";
+    ticking = false;
+  }
+  function onScroll(){
+    if (!ticking){ ticking = true; window.requestAnimationFrame(frame); }
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  frame();
 })();
 </script>
 </body>
