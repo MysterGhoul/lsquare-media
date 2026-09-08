@@ -12,3 +12,9 @@ artifact_journal.html
 _logotest.html
 _brandsonly.html
 _crop.py
+
+# client presentation (generated, images inlined)
+client_mark.html
+__pycache__/
+_s.html
+*.svgfrag
