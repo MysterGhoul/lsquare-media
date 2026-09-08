@@ -15,36 +15,31 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Inter:wght@400;450;500;600&display=swap">
 <link rel="stylesheet" href="assets/site.css">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 90'%3E%3Cpath fill='%233EA4A8' d='M0,0 H96 V18 H18 V54 H0 Z'/%3E%3Cpath fill='%233EA4A8' d='M160,90 H64 V72 H142 V36 H160 Z'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 90'%3E%3Cpath fill='%233EA4A8' d='M0,90 H96 V72 H18 V36 H0 Z'/%3E%3Cpath fill='%233EA4A8' d='M160,0 H64 V18 H142 V54 H160 Z'/%3E%3C/svg%3E">
 </head>
 <body>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-  <!-- The logo: the framing gesture reduced to two corners. Arms are 96 x 54
-       = 16:9, the same ratio as the drawn hands in the hero, so the mark and
-       the gesture are the same shape at different levels of detail. -->
+  <!-- The logo: the same gesture reduced to two corners, on the same diagonal
+       as the hands. Arms 96 x 54 = 16:9. -->
   <g id="mark">
-    <path d="M0,0 H96 V18 H18 V54 H0 Z"/>
-    <path d="M160,90 H64 V72 H142 V36 H160 Z"/>
+    <path d="M0,90 H96 V72 H18 V36 H0 Z"/>
+    <path d="M160,0 H64 V18 H142 V54 H160 Z"/>
   </g>
-  <!-- Hand making the top-left half of a director's frame. Separate overlapping
-       shapes with a background-coloured gap; a merged outline reads as a
-       boomerang, the gaps are what say "digits".
-       PROPORTION IS LOAD-BEARING: corner origin (2,6), index tip x=200 and
-       thumb tip y=117.4, so the arms are 198 x 111.4 = exactly 16:9. The
-       gesture frames a widescreen shot, which is the point. Earlier the thumb
-       reached FURTHER than the index and the corner came out 1.09 - square,
-       and anatomically backwards.
-       stroke-width 8 in a ~210 viewBox: at 5 the gaps close and it blobs
-       below 48px, which is the size the mobile hero renders it at. -->
-  <g id="hand" fill="currentColor" stroke="var(--bg)" stroke-width="8"
-     stroke-linejoin="round">
-    <path d="M2,6 L100,12 C112,15 116,26 115,42 L113,62 C111,76 98,84 78,83 L44,80 C24,76 8,64 4,44 Z"/>
-    <path d="M97,8 L184,14 a16,16 0 0 1 0,32 L96,50 Z"/>
-    <path d="M6,62 C20,64 36,70 42,78 L40,101 a16.2,16.2 0 0 1 -32,0 L6,62 Z"/>
-    <path d="M64,46 L104,45 a11.5,11.5 0 0 1 0,23 L64,69 Z"/>
-    <path d="M60,73 L96,72 a10.5,10.5 0 0 1 0,21 L60,94 Z"/>
-    <path d="M56,98 L88,97 a9.5,9.5 0 0 1 0,19 L56,117 Z"/>
+  <!-- Director's framing hands. Frame corner sits at (40,100): the index runs
+       RIGHT with its top edge on y=100, the thumb runs UP with its right edge
+       on x=40, and the crook up-right of that corner is deliberately EMPTY so
+       the 90 degrees reads. The fist hangs BELOW the index, outside the frame,
+       which is where a real hand puts it - it does NOT sit in the crook.
+       Arms are 140 x 79 = 1.772, holding the 16:9 the mark also uses.
+       Two versions on purpose, as in the reference photo: the near hand shows
+       its folded knuckles, the far hand is turned so the fingers hide behind
+       it and it reads as a clean L. -->
+  <g id="hand-open" fill="currentColor" stroke="var(--bg)" stroke-width="8" stroke-linejoin="round">
+    <path d="M6,138 C6,130 15,126 27,128 L110,138 C125,141 132,151 131,165 L128,196 C126,211 113,219 97,217 L40,209 C20,205 8,190 6,170 Z"/><path d="M4,42 C4,29 12,20 22,20 C33,20 40,29 40,42 L40,152 L4,152 Z"/><path d="M40,100 L162,100 a18,18 0 0 1 0,36 L40,136 Z"/><path d="M52,146 L112,148 a12,12 0 0 1 -1,24 L52,170 Z"/><path d="M48,176 L104,178 a11,11 0 0 1 -1,22 L48,198 Z"/><path d="M45,203 L94,205 a10,10 0 0 1 -1,20 L45,223 Z"/>
+  </g>
+  <g id="hand-closed" fill="currentColor" stroke="var(--bg)" stroke-width="8" stroke-linejoin="round">
+    <path d="M6,138 C6,130 15,126 27,128 L110,138 C125,141 132,151 131,165 L128,196 C126,211 113,219 97,217 L40,209 C20,205 8,190 6,170 Z"/><path d="M4,42 C4,29 12,20 22,20 C33,20 40,29 40,42 L40,152 L4,152 Z"/><path d="M40,100 L162,100 a18,18 0 0 1 0,36 L40,136 Z"/>
   </g>
 </defs></svg>
 
@@ -72,11 +67,11 @@
     <span class="livetag"><span class="dot" aria-hidden="true"></span>Live roster count</span>
 
     <div class="countframe">
-      <svg class="fh fh-tl" viewBox="-4 0 210 124" aria-hidden="true"><use href="#hand"/></svg>
+      <svg class="fh fh-bl" viewBox="-2 14 190 220" aria-hidden="true"><use href="#hand-open"/></svg>
       <div class="count" id="counter" role="status" aria-live="polite" aria-label="Total followers across the LL Media roster">
         <span class="odo" id="odo"></span>
       </div>
-      <svg class="fh fh-br" viewBox="-4 0 210 124" aria-hidden="true"><g transform="rotate(180 101 62)"><use href="#hand"/></g></svg>
+      <svg class="fh fh-tr" viewBox="-2 14 190 220" aria-hidden="true"><g transform="rotate(180 93 124)"><use href="#hand-closed"/></g></svg>
     </div>
 
     <p class="countlabel">followers and counting across our creators.</p>

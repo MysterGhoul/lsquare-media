@@ -80,15 +80,23 @@
   /* horizontal padding must exceed .fh width or the bracket sits on the
      digits; at 1440 that is a 50px mark inside 68px of padding. */
   .countframe{position:relative;display:inline-block;margin:0 0 18px;
-    padding:clamp(34px,5.6vw,78px) clamp(46px,8vw,118px)}
+    padding:clamp(38px,6.2vw,86px) clamp(56px,10.6vw,152px)}
   .countframe .count{margin:0}
+  /* The desktop clearance is wider than a phone can afford: at 375px the
+     number alone is ~258px inside 327px of content box, so the frame has to
+     give the padding back or it overflows and body{overflow-x:hidden} eats
+     the far hand. Hand stays narrower than the padding at every width. */
+  @media (max-width:520px){
+    .countframe{padding:clamp(24px,6.4vw,40px) clamp(30px,9vw,52px)}
+    .fh{width:clamp(26px,7.4vw,44px)}
+  }
   .fh{position:absolute;color:var(--accent);pointer-events:none;
-    width:clamp(36px,8.8vw,128px);height:auto}
-  .fh-tl{top:0;left:0;animation:handTL .95s cubic-bezier(.22,1,.36,1) both}
-  .fh-br{bottom:0;right:0;animation:handBR .95s cubic-bezier(.22,1,.36,1) .06s both}
-  @keyframes handTL{from{opacity:0;transform:translate(-16px,-16px)}
+    width:clamp(40px,9.4vw,136px);height:auto}
+  .fh-bl{bottom:0;left:0;animation:handBL .95s cubic-bezier(.22,1,.36,1) both}
+  .fh-tr{top:0;right:0;animation:handTR .95s cubic-bezier(.22,1,.36,1) .06s both}
+  @keyframes handBL{from{opacity:0;transform:translate(-16px,16px)}
                     to{opacity:.9;transform:none}}
-  @keyframes handBR{from{opacity:0;transform:translate(16px,16px)}
+  @keyframes handTR{from{opacity:0;transform:translate(16px,-16px)}
                     to{opacity:.9;transform:none}}
 
   .count{font-family:Space Grotesk,sans-serif;font-weight:700;
