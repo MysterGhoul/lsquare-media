@@ -7,3 +7,8 @@ strip_for_artifact.py
 artifact_site.html
 artifact_logo.html
 artifact_journal.html
+
+# scratch render harnesses
+_logotest.html
+_brandsonly.html
+_crop.py
