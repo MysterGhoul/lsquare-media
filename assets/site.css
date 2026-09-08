@@ -7,9 +7,9 @@
     /* One accent, defined twice: the hex for solid fills, the raw channels
        so every tint below can be rgba() off the same value. Change both
        together and the whole page re-themes. */
-    --accent:#EE7F63;
-    --accent-rgb:238,127,99;
-    --on-accent:#140B08;   /* text that sits ON the accent */
+    --accent:#3EA4A8;
+    --accent-rgb:62,164,168;
+    --on-accent:#081616;   /* text that sits ON the accent */
 
     --line:rgba(237,236,232,.10); --line-2:rgba(237,236,232,.06);
     --maxw:1120px;
