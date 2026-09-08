@@ -1,0 +1,8 @@
+# Deploy only what the live site needs: index.html, CNAME, assets/.
+# Everything below stays local. The build notes and the logo review page
+# reference creator identities, which are private by company policy.
+HOW_TO_BUILD_THE_LSQUARE_SITE.txt
+logo.html
+strip_for_artifact.py
+artifact_site.html
+artifact_logo.html
