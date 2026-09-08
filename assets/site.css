@@ -185,28 +185,17 @@
 
   /* ---------- brands + discretion ---------- */
   .roster{background:var(--bg-2);border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
-  /* fixed 4 across so a multiple of 4 brands fills every row with no dead
-     cell; auto-fit left a ragged 5+3 at desktop width */
-  .brandgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
-    background:var(--line-2);border:1px solid var(--line-2);border-radius:16px;overflow:hidden}
-  @media (max-width:900px){ .brandgrid{grid-template-columns:repeat(3,1fr)} }
-  @media (max-width:620px){ .brandgrid{grid-template-columns:repeat(2,1fr)} }
-  .brand{background:var(--bg-2);min-height:112px;padding:24px;display:flex;
-    align-items:center;justify-content:center;text-align:center;
-    font-family:Space Grotesk,sans-serif;font-weight:600;font-size:18px;
-    letter-spacing:-.01em;color:var(--ink);transition:background .2s ease}
-  .brand:hover{background:var(--panel)}
-  .brand.ph{color:var(--faint);font-family:Space Mono,monospace;font-size:10px;
-    font-weight:400;letter-spacing:.18em;text-transform:uppercase}
-  /* One flat colour and one optical height across the row, so a real symbol
-     and a plain logotype sit together without either looking like a mistake. */
-  .bmark{display:inline-flex;align-items:center;gap:10px;color:var(--dim);
-    transition:color .2s ease}
-  .bmark svg{width:26px;height:26px;flex:0 0 26px}
-  .bmark > span{font-size:18px;letter-spacing:-.01em}
-  .blogotype{color:var(--dim);font-size:18px;letter-spacing:-.012em;
-    transition:color .2s ease}
-  .brand:hover .bmark,.brand:hover .blogotype{color:var(--ink)}
+  /* Logo wall. Centred flex-wrap, not a grid: the brand count changes and a
+     rigid grid leaves a ragged last row every time it does. Logos are white
+     silhouettes on a common canvas height, so one CSS height balances them. */
+  .brandwall{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;
+    gap:clamp(26px,4vw,54px) clamp(30px,5vw,68px);
+    background:var(--bg-2);border:1px solid var(--line-2);border-radius:16px;
+    padding:clamp(30px,4.6vw,50px) clamp(24px,4vw,44px)}
+  .brandwall img{display:block;height:clamp(19px,2.5vw,32px);width:auto;
+    opacity:.66;transition:opacity .2s ease}
+  .brandwall img:hover{opacity:1}
+  .brandnote{color:var(--dim);font-size:14.5px;max-width:62ch;margin:22px 0 0}
   .disc{margin-top:26px;border:1px solid var(--line);border-radius:18px;background:var(--panel);
     padding:44px 40px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
   .disc h3{font-size:clamp(22px,2.9vw,32px);font-weight:700;margin-bottom:14px}
