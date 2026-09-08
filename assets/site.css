@@ -2,7 +2,8 @@
     /* Ground is lifted off pure black and warmed very slightly. Pure #000
        against a saturated accent is what makes a dark page glare. */
     --bg:#0C0C0F; --bg-2:#101014; --panel:#15151A; --panel-2:#1B1B21;
-    --ink:#EDECE8; --dim:#9A99A3; --faint:#63626D;
+    --ink:#EDECE8; --ink-rgb:237,236,232;
+    --dim:#9A99A3; --faint:#63626D;
 
     /* One accent, defined twice: the hex for solid fills, the raw channels
        so every tint below can be rgba() off the same value. Change both
@@ -76,12 +77,12 @@
 
   .count{font-family:Space Grotesk,sans-serif;font-weight:700;
     font-size:clamp(46px,11.2vw,146px);line-height:1;letter-spacing:-.045em;
-    color:var(--accent);margin:0 0 18px;
+    color:var(--ink);margin:0 0 18px;
     display:flex;align-items:flex-start;flex-wrap:nowrap}
   /* glow must live on the parent: each .d clips overflow, so a text-shadow
      on the digits themselves gets sliced into rectangles. */
   .odo{display:inline-flex;align-items:flex-start;
-    filter:drop-shadow(0 0 34px rgba(var(--accent-rgb),.16))}
+    filter:drop-shadow(0 0 34px rgba(var(--ink-rgb),.10))}
   .d{display:inline-block;width:.63em;height:1em;overflow:hidden;position:relative}
   .strip{position:absolute;top:0;left:0;width:100%;display:flex;flex-direction:column;will-change:transform}
   .strip b{display:block;height:1em;line-height:1;font-weight:700;text-align:center;
