@@ -23,19 +23,24 @@
     <path d="M0,0 H66 V20 H20 V66 H0 Z"/>
     <path d="M100,100 H34 V80 H80 V34 H100 Z"/>
   </g>
-  <!-- One hand, drawn as separate overlapping shapes with a background-coloured
-       gap between them. A single merged outline just reads as a boomerang -
-       the gaps are what make it read as digits. Fist top-left, index out to
-       the right, thumb down: the top-left half of a director's frame. -->
-  <g id="hand" fill="currentColor" stroke="var(--bg)" stroke-width="5"
+  <!-- Hand making the top-left half of a director's frame. Drawn as separate
+       overlapping shapes with a background-coloured gap between them; a single
+       merged outline just reads as a boomerang, the gaps are what say "digits".
+       Studied against a reference: the index tapers, the thumb has a wide
+       thenar base, and the three curled fingers step SHORT - long bars read as
+       fingers extended, not folded into a fist.
+       stroke-width is 8 in a 188-unit viewBox (~4%) because at 5 the gaps close
+       up and the hand turns into a blob below 48px, which is the size the
+       mobile hero actually renders it at. -->
+  <g id="hand" fill="currentColor" stroke="var(--bg)" stroke-width="8"
      stroke-linejoin="round">
-    <path d="M20,44 C20,26 32,16 50,16 L74,16 C92,16 100,28 100,46
-             L100,90 C100,108 88,116 70,116 L50,116 C30,116 20,104 20,84 Z"/>
-    <rect x="92" y="16" width="84" height="32" rx="16"/>
-    <rect x="20" y="102" width="32" height="76" rx="16"/>
-    <rect x="60" y="52" width="62" height="23" rx="11.5"/>
-    <rect x="58" y="80" width="52" height="21" rx="10.5"/>
-    <rect x="56" y="106" width="44" height="19" rx="9.5"/>
+    <path d="M2,6 L98,12 C112,15 116,28 115,46 L112,80
+             C109,100 94,110 72,109 L40,106 C20,102 8,88 4,66 Z"/>
+    <path d="M106,8 L174,15 a15.5,15.5 0 0 1 -1,31 L105,49 Z"/>
+    <path d="M8,86 C22,88 38,94 44,102 L40,158 a15.5,15.5 0 0 1 -31,-2 Z"/>
+    <path d="M66,52 L109,51 a13,13 0 0 1 0,26 L66,78 Z"/>
+    <path d="M62,84 L99,83 a12,12 0 0 1 0,24 L62,108 Z"/>
+    <path d="M58,116 L88,115 a10.5,10.5 0 0 1 0,21 L58,137 Z"/>
   </g>
 </defs></svg>
 
