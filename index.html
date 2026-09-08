@@ -14,220 +14,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Inter:wght@400;450;500;600&display=swap">
+<link rel="stylesheet" href="assets/site.css">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23D6FF4B' d='M0,0 H26 V74 H64 V100 H0 Z'/%3E%3Cpath fill='%23D6FF4B' d='M100,100 H74 V26 H36 V0 H100 Z'/%3E%3C/svg%3E">
 </head>
 <body>
-<style>
-  :root{
-    --bg:#08080A; --bg-2:#0B0B0F; --panel:#101015; --panel-2:#16161D;
-    --ink:#F4F3EF; --dim:#9B9AA3; --faint:#5E5D68;
-    --accent:#D6FF4B; --accent-dim:#A8CC33; --accent2:#7B5CFF;
-    --line:rgba(244,243,239,.10); --line-2:rgba(244,243,239,.06);
-    --maxw:1120px;
-  }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{margin:0;background:var(--bg);color:var(--ink);
-    font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;
-    font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;
-    overflow-x:hidden}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
-  a{color:inherit;text-decoration:none}
-  h1,h2,h3{font-family:Space Grotesk,sans-serif;letter-spacing:-.025em;line-height:1.06;margin:0}
-  .eyebrow{font-family:Space Mono,monospace;font-size:11px;font-weight:700;
-    letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin:0}
-
-  /* ---------- nav ---------- */
-  nav{position:sticky;top:0;z-index:50;background:rgba(8,8,10,.78);
-    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-    border-bottom:1px solid var(--line-2)}
-  .navin{max-width:var(--maxw);margin:0 auto;padding:14px 24px;
-    display:flex;align-items:center;justify-content:space-between;gap:20px}
-  .lockup{display:flex;align-items:center;gap:11px}
-  .lockup .wm{font-family:Space Grotesk,sans-serif;font-weight:700;font-size:18px;
-    letter-spacing:-.01em;line-height:1;display:block}
-  .lockup .sub{font-family:Space Mono,monospace;font-size:9px;letter-spacing:.2em;
-    color:var(--faint);text-transform:uppercase;display:block;margin-top:3px}
-  .navlinks{display:flex;align-items:center;gap:28px;font-size:14px;color:var(--dim);font-weight:450}
-  .navlinks a:hover{color:var(--ink)}
-  .btn{display:inline-block;background:var(--accent);color:#08080A;font-weight:600;
-    font-size:14px;padding:10px 20px;border-radius:999px;border:1px solid var(--accent);
-    transition:transform .18s ease, background .18s ease;cursor:pointer;
-    font-family:inherit;line-height:1.3}
-  .btn:hover{background:var(--ink);border-color:var(--ink);transform:translateY(-1px)}
-  .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
-  .btn.ghost:hover{background:transparent;border-color:var(--ink);color:var(--ink)}
-  @media (max-width:780px){ .navlinks .hidem{display:none} }
-
-  /* ---------- hero ---------- */
-  .hero{position:relative;padding:88px 0 76px;overflow:hidden}
-  .hero::before{content:"";position:absolute;inset:-40% 0 auto 50%;width:1200px;height:800px;
-    transform:translateX(-50%);pointer-events:none;
-    background:radial-gradient(50% 50% at 50% 50%, rgba(214,255,75,.13), rgba(214,255,75,0) 70%)}
-  .hero::after{content:"";position:absolute;inset:0;pointer-events:none;
-    background-image:linear-gradient(var(--line-2) 1px,transparent 1px),
-      linear-gradient(90deg,var(--line-2) 1px,transparent 1px);
-    background-size:64px 64px;
-    -webkit-mask-image:radial-gradient(70% 60% at 50% 30%,#000,transparent 75%);
-    mask-image:radial-gradient(70% 60% at 50% 30%,#000,transparent 75%)}
-  .hero .wrap{position:relative;z-index:1}
-  .livetag{display:inline-flex;align-items:center;gap:9px;
-    font-family:Space Mono,monospace;font-size:11px;font-weight:700;letter-spacing:.16em;
-    text-transform:uppercase;color:var(--dim);
-    border:1px solid var(--line);border-radius:999px;padding:7px 15px 7px 12px;margin-bottom:30px}
-  .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);
-    box-shadow:0 0 0 0 rgba(214,255,75,.7);animation:pulse 2.4s infinite}
-  @keyframes pulse{
-    0%{box-shadow:0 0 0 0 rgba(214,255,75,.55)}
-    70%{box-shadow:0 0 0 9px rgba(214,255,75,0)}
-    100%{box-shadow:0 0 0 0 rgba(214,255,75,0)}}
-
-  .count{font-family:Space Grotesk,sans-serif;font-weight:700;
-    font-size:clamp(46px,11.2vw,146px);line-height:1;letter-spacing:-.045em;
-    color:var(--accent);margin:0 0 18px;
-    display:flex;align-items:flex-start;flex-wrap:nowrap}
-  /* glow must live on the parent: each .d clips overflow, so a text-shadow
-     on the digits themselves gets sliced into rectangles. */
-  .odo{display:inline-flex;align-items:flex-start;
-    filter:drop-shadow(0 0 30px rgba(214,255,75,.32))}
-  .d{display:inline-block;width:.63em;height:1em;overflow:hidden;position:relative}
-  .strip{position:absolute;top:0;left:0;width:100%;display:flex;flex-direction:column;will-change:transform}
-  .strip b{display:block;height:1em;line-height:1;font-weight:700;text-align:center;
-    letter-spacing:normal}
-  .sep{display:inline-block;width:.28em;text-align:center}
-
-  .countlabel{font-family:Space Grotesk,sans-serif;font-weight:500;
-    font-size:clamp(17px,2.5vw,26px);letter-spacing:-.02em;color:var(--ink);
-    margin:0 0 8px;max-width:46ch}
-  .countsub{color:var(--faint);font-size:13px;margin:0 0 46px;
-    font-family:Space Mono,monospace;letter-spacing:.02em}
-  .countsub b{color:var(--dim);font-weight:400}
-
-  h1{font-size:clamp(30px,4.6vw,54px);font-weight:700;max-width:19ch;margin:0 0 20px}
-  h1 .hl{color:var(--accent)}
-  .herolede{color:var(--dim);font-size:clamp(15px,1.6vw,18px);max-width:56ch;margin:0 0 34px}
-  .cta{display:flex;gap:12px;flex-wrap:wrap}
-  .cta .btn{padding:13px 26px;font-size:15px}
-
-  /* ---------- strip ---------- */
-  .strip-stats{border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);
-    background:var(--bg-2)}
-  .statgrid{display:grid;grid-template-columns:repeat(4,1fr)}
-  .stat{padding:30px 24px;border-left:1px solid var(--line-2)}
-  .stat:first-child{border-left:0}
-  .stat .n{font-family:Space Grotesk,sans-serif;font-weight:700;font-size:clamp(24px,3.2vw,36px);
-    letter-spacing:-.03em;line-height:1;display:block;margin-bottom:8px}
-  .stat .l{font-family:Space Mono,monospace;font-size:10px;letter-spacing:.16em;
-    text-transform:uppercase;color:var(--faint)}
-  @media (max-width:760px){
-    .statgrid{grid-template-columns:repeat(2,1fr)}
-    .stat:nth-child(3){border-left:0}
-    .stat:nth-child(n+3){border-top:1px solid var(--line-2)}}
-
-  /* ---------- sections ---------- */
-  section{padding:96px 0}
-  .shead{margin-bottom:52px;max-width:60ch}
-  .shead .eyebrow{margin-bottom:16px}
-  .shead h2{font-size:clamp(28px,3.8vw,44px);font-weight:700;margin-bottom:16px}
-  .shead p{color:var(--dim);margin:0;font-size:16px}
-
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1px;
-    background:var(--line-2);border:1px solid var(--line-2);border-radius:16px;overflow:hidden}
-  .card{background:var(--bg);padding:34px 30px;transition:background .2s ease}
-  .card:hover{background:var(--panel)}
-  .card .ci{width:34px;height:34px;margin-bottom:22px;color:var(--accent)}
-  .card h3{font-size:19px;font-weight:600;margin-bottom:10px}
-  .card p{color:var(--dim);font-size:14.5px;margin:0;line-height:1.62}
-
-  /* ---------- brands + discretion ---------- */
-  .roster{background:var(--bg-2);border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
-  /* fixed 4 across so a multiple of 4 brands fills every row with no dead
-     cell; auto-fit left a ragged 5+3 at desktop width */
-  .brandgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
-    background:var(--line-2);border:1px solid var(--line-2);border-radius:16px;overflow:hidden}
-  @media (max-width:900px){ .brandgrid{grid-template-columns:repeat(3,1fr)} }
-  @media (max-width:620px){ .brandgrid{grid-template-columns:repeat(2,1fr)} }
-  .brand{background:var(--bg-2);min-height:112px;padding:24px;display:flex;
-    align-items:center;justify-content:center;text-align:center;
-    font-family:Space Grotesk,sans-serif;font-weight:600;font-size:18px;
-    letter-spacing:-.01em;color:var(--ink);transition:background .2s ease}
-  .brand:hover{background:var(--panel)}
-  .brand.ph{color:var(--faint);font-family:Space Mono,monospace;font-size:10px;
-    font-weight:400;letter-spacing:.18em;text-transform:uppercase}
-  .disc{margin-top:26px;border:1px solid var(--line);border-radius:18px;background:var(--panel);
-    padding:44px 40px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
-  .disc h3{font-size:clamp(22px,2.9vw,32px);font-weight:700;margin-bottom:14px}
-  .disc h3 .hl{color:var(--accent)}
-  .disc .dtext{color:var(--dim);font-size:15px;margin:0;max-width:40ch}
-  .disclist{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:20px}
-  .disclist li{display:flex;gap:14px;font-size:14.5px}
-  .disclist svg{flex:0 0 18px;width:18px;height:18px;margin-top:3px;color:var(--accent)}
-  .disclist b{display:block;color:var(--ink);font-weight:600;margin-bottom:2px}
-  .disclist i{display:block;font-style:normal;color:var(--dim)}
-  @media (max-width:820px){ .disc{grid-template-columns:1fr;gap:32px;padding:34px 28px} }
-
-  /* ---------- process ---------- */
-  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;counter-reset:s}
-  .step{position:relative;padding-top:26px;border-top:2px solid var(--accent)}
-  .step .sn{font-family:Space Mono,monospace;font-size:11px;font-weight:700;letter-spacing:.18em;
-    color:var(--accent);display:block;margin-bottom:12px}
-  .step h3{font-size:17px;font-weight:600;margin-bottom:9px}
-  .step p{color:var(--dim);font-size:14px;margin:0}
-  @media (max-width:860px){ .steps{grid-template-columns:repeat(2,1fr)} }
-  @media (max-width:520px){ .steps{grid-template-columns:1fr} }
-
-  /* ---------- looking for ---------- */
-  .lf{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
-  .lflist{list-style:none;padding:0;margin:0}
-  .lflist li{display:flex;gap:14px;padding:15px 0;border-bottom:1px solid var(--line-2);
-    font-size:15px;color:var(--ink)}
-  .lflist li:last-child{border-bottom:0}
-  .lflist svg{flex:0 0 18px;width:18px;height:18px;margin-top:4px;color:var(--accent)}
-  .lflist span b{display:block;font-weight:600;margin-bottom:2px}
-  .lflist span i{display:block;font-style:normal;color:var(--dim);font-size:14px}
-  .quote{border-left:2px solid var(--accent);padding:4px 0 4px 24px}
-  .quote p{font-family:Space Grotesk,sans-serif;font-size:clamp(19px,2.4vw,26px);
-    font-weight:500;letter-spacing:-.02em;line-height:1.32;margin:0 0 16px}
-  .quote cite{font-family:Space Mono,monospace;font-size:11px;letter-spacing:.16em;
-    text-transform:uppercase;color:var(--faint);font-style:normal}
-  @media (max-width:860px){ .lf{grid-template-columns:1fr;gap:40px} }
-
-  /* ---------- apply ---------- */
-  .apply{background:var(--bg-2);border-top:1px solid var(--line-2)}
-  form{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:720px}
-  .f{display:flex;flex-direction:column;gap:8px}
-  .f.full{grid-column:1/-1}
-  label{font-family:Space Mono,monospace;font-size:10px;letter-spacing:.16em;
-    text-transform:uppercase;color:var(--faint)}
-  input,select,textarea{background:var(--panel);border:1px solid var(--line);color:var(--ink);
-    border-radius:10px;padding:13px 14px;font-family:inherit;font-size:15px;width:100%;
-    transition:border-color .18s ease}
-  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent)}
-  textarea{resize:vertical;min-height:112px}
-  select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239B9AA3' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-    background-repeat:no-repeat;background-position:right 12px center;background-size:18px;padding-right:40px}
-  .formnote{grid-column:1/-1;color:var(--faint);font-size:13px;margin:0}
-  .formmsg{grid-column:1/-1;font-size:14px;margin:0;display:none;padding:13px 15px;border-radius:10px}
-  .formmsg.ok{display:block;background:rgba(214,255,75,.10);border:1px solid rgba(214,255,75,.35);color:var(--accent)}
-  .formmsg.err{display:block;background:rgba(255,90,90,.09);border:1px solid rgba(255,90,90,.3);color:#ff9a9a}
-  @media (max-width:620px){ form{grid-template-columns:1fr} }
-
-  /* ---------- footer ---------- */
-  footer{border-top:1px solid var(--line-2);padding:56px 0 64px;background:var(--bg)}
-  .fin{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;align-items:flex-start}
-  .fnote{color:var(--faint);font-size:13px;max-width:38ch;margin:16px 0 0}
-  .flinks{display:flex;gap:40px;flex-wrap:wrap}
-  .fcol h4{font-family:Space Mono,monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;
-    color:var(--faint);margin:0 0 14px;font-weight:700}
-  .fcol a{display:block;color:var(--dim);font-size:14px;padding:4px 0}
-  .fcol a:hover{color:var(--accent)}
-  .legal{margin-top:48px;padding-top:24px;border-top:1px solid var(--line-2);
-    color:var(--faint);font-size:12px;font-family:Space Mono,monospace;letter-spacing:.04em;
-    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-
-  @media (prefers-reduced-motion:reduce){
-    *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
-</style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
   <g id="mark">
@@ -244,8 +34,9 @@
     </a>
     <div class="navlinks">
       <a class="hidem" href="#what">What we do</a>
+      <a class="hidem" href="#stores">Stores</a>
       <a class="hidem" href="#brands">Brands</a>
-      <a class="hidem" href="#process">Process</a>
+      <a class="hidem" href="journal.html">Journal</a>
       <a class="btn" href="#apply">Apply</a>
     </div>
   </div>
@@ -266,7 +57,7 @@
     <p class="countsub">Combined reach across every creator we represent, updating live.</p>
 
     <h1>You make the work.<br><span class="hl">We run everything else.</span></h1>
-    <p class="herolede">LL Media is a creator management company. We handle brand deals, negotiation, editing, posting strategy and the business admin that eats your week &mdash; so the only thing left on your plate is the part you are actually good at.</p>
+    <p class="herolede">LL Media is a creator management company. Since 2018 we have handled brand deals, negotiation, editing, posting strategy, storefronts and the business admin that eats your week &mdash; so the only thing left on your plate is the part you are actually good at.</p>
     <div class="cta">
       <a class="btn" href="#apply">Apply to join the roster</a>
       <a class="btn ghost" href="#what">See what we handle</a>
@@ -278,8 +69,8 @@
 <div class="strip-stats">
   <div class="wrap" style="padding:0">
     <div class="statgrid">
-      <div class="stat" style="padding-left:24px"><span class="n" id="s-creators">--</span><span class="l">Creators represented</span></div>
-      <div class="stat"><span class="n">6</span><span class="l">Platforms covered</span></div>
+      <div class="stat" style="padding-left:24px"><span class="n">2018</span><span class="l">Representing creators since</span></div>
+      <div class="stat"><span class="n" id="s-creators">--</span><span class="l">Creators represented</span></div>
       <div class="stat"><span class="n">100%</span><span class="l">Creator owns their channel</span></div>
       <div class="stat"><span class="n">48h</span><span class="l">Application response</span></div>
     </div>
@@ -317,7 +108,7 @@
       <div class="card">
         <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 6.5c0-2-2.2-3-5-3s-5 .9-5 3 2.2 2.8 5 3.5 5 1.4 5 3.5-2.2 3-5 3-5-1-5-3"/></svg>
         <h3>Money, plural</h3>
-        <p>Sponsorships are one income stream and a fragile one. We build the others with you: merch, memberships, affiliate, licensing, live. The goal is that no single platform can end your year.</p>
+        <p>Sponsorships are one income stream and a fragile one. We build the others with you: your own <a href="#stores" style="color:var(--accent)">storefront</a>, memberships, affiliate, licensing, live. The goal is that no single platform can end your year.</p>
       </div>
 
       <div class="card">
@@ -336,6 +127,32 @@
   </div>
 </section>
 
+<!-- ============ STORE ARM ============ -->
+<section class="storeband" id="stores">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">The other half of the company</p>
+      <h2>We build the store, too.</h2>
+      <p>Merch, digital products, print on demand, the checkout, the fulfilment, the restocks. Most creators leave money on the table because building a shop properly is a project nobody has a spare weekend for. It runs as its own arm &mdash; for the creators we represent, and for brands who just want a storefront done right.</p>
+      <a class="btn" href="https://lsquare.store">Visit lsquare.store</a>
+    </div>
+    <ul class="storelist">
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9"/><path d="M3 9h18v11a1 1 0 01-1 1H4a1 1 0 01-1-1z"/><path d="M9 13h6"/></svg>
+        <span><b>Built, not templated</b><i>A storefront that looks like your channel, not a stock theme with your logo dropped in the corner.</i></span>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+        <span><b>We run the boring end</b><i>Inventory, fulfilment, restocks, customer emails, returns. You approve the products; we handle everything after that.</i></span>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg>
+        <span><b>Margins you can actually see</b><i>What each product really makes after platform fees, print costs and shipping. No guessing at the end of the quarter.</i></span>
+      </li>
+    </ul>
+  </div>
+</section>
+
 <!-- ============ BRANDS ============ -->
 <!-- Creators are anonymous by policy. Never name, tag or link a creator here. -->
 <section class="roster" id="brands">
@@ -346,16 +163,31 @@
       <p>We do not publish our creators. We do publish who we negotiate against.</p>
     </div>
 
-    <!-- TODO: replace these eight placeholders with real brand names. -->
+    <!-- Grid is 4 across; add brands in multiples of 4 to keep rows full.
+         Marks are monochrome and optically matched, so a brand whose logo is
+         a logotype (no symbol) sits in the row without looking unfinished. -->
     <div class="brandgrid">
-      <div class="brand ph">Brand name</div>
-      <div class="brand ph">Brand name</div>
-      <div class="brand ph">Brand name</div>
-      <div class="brand ph">Brand name</div>
-      <div class="brand ph">Brand name</div>
-      <div class="brand ph">Brand name</div>
-      <div class="brand ph">Brand name</div>
-      <div class="brand ph">Brand name</div>
+
+      <div class="brand">
+        <span class="bmark">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"/></svg>
+          <span>Twitch</span>
+        </span>
+      </div>
+
+      <div class="brand">
+        <span class="bmark">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.6878 1.3459a1.365 1.365 0 0 0-.2734.0058c-.528.066-1.0133.1616-1.4843.3086A10.0568 10.0568 0 0 0 .3208 8.2697c-.147.471-.2445.9583-.3105 1.4863-.091.734.431 1.4041 1.166 1.4961.734.091 1.404-.43 1.496-1.164.05-.406.119-.7316.209-1.0196A7.3736 7.3736 0 0 1 7.727 4.221c.288-.09.6145-.157 1.0195-.207.735-.092 1.255-.7631 1.164-1.4981a1.3394 1.3394 0 0 0-1.2226-1.17Zm4.0488 5.2226c-2.629 0-3.9432.0007-4.9472.5117A4.684 4.684 0 0 0 5.7406 9.131c-.512 1.004-.5117 2.3183-.5117 4.9473v4.289c0 1.502-.001 2.2542.291 2.8282.257.505.6679.9149 1.1719 1.1719.574.292 1.326.291 2.828.291h6.9706c2.628 0 3.9442.0012 4.9472-.5098a4.6883 4.6883 0 0 0 2.0507-2.0508c.512-1.004.5117-2.3182.5117-4.9472v-1.0723c0-2.629.0003-3.9433-.5117-4.9473a4.6883 4.6883 0 0 0-2.0507-2.0508c-1.003-.511-2.3193-.5117-4.9472-.5117zm.537 6.7051c.741 0 1.3399.5998 1.3399 1.3398v2.6836c0 .74-.5988 1.3399-1.3398 1.3399-.74 0-1.3418-.5999-1.3418-1.3399v-2.6836c0-.74.6018-1.3398 1.3418-1.3398zm5.3632 0c.74 0 1.3399.5998 1.3399 1.3398v2.6836c0 .74-.5999 1.3399-1.3399 1.3399-.741 0-1.3398-.5999-1.3398-1.3399v-2.6836c0-.74.5989-1.3398 1.3398-1.3398z"/></svg>
+          <span>Streamlabs</span>
+        </span>
+      </div>
+
+      <!-- TODO: no open-source mark exists for these two. Drop an SVG into
+           assets/logos/ and swap the logotype for a <span class="bmark"> pair
+           exactly like Twitch above. -->
+      <div class="brand"><span class="blogotype">StreamElements</span></div>
+      <div class="brand"><span class="blogotype">Hypergryph</span></div>
+
     </div>
 
     <div class="disc">
@@ -434,6 +266,35 @@
   </div>
 </section>
 
+<!-- ============ JOURNAL ============ -->
+<section id="journal" style="padding-top:0">
+  <div class="wrap">
+    <div class="shead">
+      <p class="eyebrow">Journal</p>
+      <h2>Eight years of notes.</h2>
+      <p>What we have learned since 2018, mostly about money and contracts.</p>
+    </div>
+    <div class="jlist">
+      <a class="jitem" href="journal.html#eight-years">
+        <span class="jdate">22 June 2026</span>
+        <div><h3>Eight years, and the one thing that has not changed</h3>
+        <p>The industry grew up. The person making the work is still the worst-placed person to negotiate for it.</p></div>
+      </a>
+      <a class="jitem" href="journal.html#private-roster">
+        <span class="jdate">18 February 2025</span>
+        <div><h3>Why our roster stays private</h3>
+        <p>A roster page is a marketing asset for the agency and a liability for the talent.</p></div>
+      </a>
+      <a class="jitem" href="journal.html#five-years">
+        <span class="jdate">7 August 2023</span>
+        <div><h3>Five years</h3>
+        <p>In 2018 this was one person, a spreadsheet, and a conviction that creators were being paid a third of what they were worth.</p></div>
+      </a>
+    </div>
+    <p style="margin-top:28px"><a class="btn ghost" href="journal.html">Read the journal</a></p>
+  </div>
+</section>
+
 <!-- ============ APPLY ============ -->
 <section class="apply" id="apply">
   <div class="wrap">
@@ -468,6 +329,10 @@
       </div>
       <div class="f full"><label for="fmore">Anything else worth knowing</label>
         <textarea id="fmore" name="message" placeholder="What you make, where you want it to go, and what is in the way."></textarea></div>
+      <div class="hp" aria-hidden="true">
+        <label for="fco">Company</label>
+        <input id="fco" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
+      </div>
       <div class="f full" style="align-items:flex-start"><button class="btn" type="submit" style="padding:14px 32px;font-size:15px">Send application</button></div>
       <p class="formmsg" id="formmsg" role="status"></p>
       <p class="formnote">We only use this to reply to you. No list, no resale, no newsletter you did not ask for.</p>
@@ -489,7 +354,8 @@
       </div>
       <div class="flinks">
         <div class="fcol"><h4>Company</h4>
-          <a href="#what">What we do</a><a href="#brands">Brands</a><a href="#process">Process</a>
+          <a href="#what">What we do</a><a href="#stores">Stores</a>
+          <a href="#brands">Brands</a><a href="journal.html">Journal</a>
         </div>
         <div class="fcol"><h4>Creators</h4>
           <a href="#apply">Apply</a><a href="#who">Who we sign</a>
@@ -500,7 +366,7 @@
       </div>
     </div>
     <div class="legal">
-      <span>&copy; <span id="yr">2026</span> LL Media LLC</span>
+      <span>&copy; <span id="yr">2026</span> LL Media LLC &middot; Est. 2018</span>
       <span>lsquare.media</span>
     </div>
   </div>
@@ -532,10 +398,15 @@
     // genuinely live. Until then the number is modelled from seed + perDay.
     liveEndpoint: null,
 
-    // Formspree (or similar) endpoint for the application form.
-    // null  ->  the form falls back to opening the visitor's mail client.
-    formEndpoint: null,
-    contactEmail: "hello@lsquare.media"
+    // Application form POST target. This is an OPAQUE form id from the form
+    // provider - it deliberately contains no email address, because the page
+    // is public source and the destination inbox is private.
+    //
+    // The inbox itself is configured in the provider's dashboard, so changing
+    // where applications land later needs NO change to this file at all.
+    // Only swapping provider entirely touches this line.
+    // Setup steps: HOW_TO_BUILD_THE_LSQUARE_SITE.txt -> THE APPLICATION FORM.
+    formEndpoint: null
   };
 
   /* ================= follower model ================= */
@@ -654,6 +525,7 @@
   /* ================= application form ================= */
   var form = document.getElementById("applyform");
   var msg  = document.getElementById("formmsg");
+  var btn  = form.querySelector("button[type=submit]");
 
   function say(kind, text){
     msg.className = "formmsg " + kind;
@@ -665,6 +537,14 @@
     var data = {};
     new FormData(form).forEach(function(v, k){ data[k] = String(v).trim(); });
 
+    // Honeypot. A human never fills a field they cannot see, so a bot that
+    // does gets the success message and nothing gets sent. Don't tell it why.
+    if (data._gotcha){
+      form.reset();
+      say("ok", "Got it. You will hear back from us inside 48 hours.");
+      return;
+    }
+
     if (!data.name || !data.email || !data.handle){
       say("err", "Name, email and handle are all needed before we can reply to you.");
       return;
@@ -674,39 +554,31 @@
       return;
     }
 
-    if (CFG.formEndpoint){
-      say("ok", "Sending...");
-      fetch(CFG.formEndpoint, {
-        method:  "POST",
-        headers: { "Accept": "application/json", "Content-Type": "application/json" },
-        body:    JSON.stringify(data)
-      }).then(function(r){
-        if (r.ok){
-          form.reset();
-          say("ok", "Got it. You will hear back from us inside 48 hours.");
-        } else {
-          say("err", "That did not send. Email us directly at " + CFG.contactEmail + ".");
-        }
-      }).catch(function(){
-        say("err", "That did not send. Email us directly at " + CFG.contactEmail + ".");
-      });
-    } else {
-      // No backend wired up yet - hand off to the visitor's mail client.
-      var body = [
-        "Name: "     + data.name,
-        "Email: "    + data.email,
-        "Handle: "   + data.handle,
-        "Platform: " + data.platform,
-        "Size: "     + data.size,
-        "Bottleneck: " + data.goal,
-        "",
-        data.message || ""
-      ].join("\n");
-      window.location.href = "mailto:" + CFG.contactEmail
-        + "?subject=" + encodeURIComponent("Roster application - " + data.handle)
-        + "&body="    + encodeURIComponent(body);
-      say("ok", "Opening your email app so you can send it across.");
+    if (!CFG.formEndpoint){
+      say("err", "The application form is not connected yet. Please try again shortly.");
+      return;
     }
+
+    data._subject = "Roster application - " + data.handle;
+
+    btn.disabled = true;
+    say("ok", "Sending...");
+    fetch(CFG.formEndpoint, {
+      method:  "POST",
+      headers: { "Accept": "application/json", "Content-Type": "application/json" },
+      body:    JSON.stringify(data)
+    }).then(function(r){
+      if (r.ok){
+        form.reset();
+        say("ok", "Got it. You will hear back from us inside 48 hours.");
+      } else {
+        btn.disabled = false;
+        say("err", "That did not send. Give it another try in a moment.");
+      }
+    }).catch(function(){
+      btn.disabled = false;
+      say("err", "That did not send. Check your connection and try again.");
+    });
   });
 
 })();
