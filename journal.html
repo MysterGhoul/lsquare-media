@@ -23,6 +23,20 @@
     <path d="M0,0 H66 V20 H20 V66 H0 Z"/>
     <path d="M100,100 H34 V80 H80 V34 H100 Z"/>
   </g>
+  <!-- One hand, drawn as separate overlapping shapes with a background-coloured
+       gap between them. A single merged outline just reads as a boomerang -
+       the gaps are what make it read as digits. Fist top-left, index out to
+       the right, thumb down: the top-left half of a director's frame. -->
+  <g id="hand" fill="currentColor" stroke="var(--bg)" stroke-width="5"
+     stroke-linejoin="round">
+    <path d="M20,44 C20,26 32,16 50,16 L74,16 C92,16 100,28 100,46
+             L100,90 C100,108 88,116 70,116 L50,116 C30,116 20,104 20,84 Z"/>
+    <rect x="92" y="16" width="84" height="32" rx="16"/>
+    <rect x="20" y="102" width="32" height="76" rx="16"/>
+    <rect x="60" y="52" width="62" height="23" rx="11.5"/>
+    <rect x="58" y="80" width="52" height="21" rx="10.5"/>
+    <rect x="56" y="106" width="44" height="19" rx="9.5"/>
+  </g>
 </defs></svg>
 
 <nav>

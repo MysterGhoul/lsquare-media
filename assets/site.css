@@ -75,6 +75,22 @@
     70%{box-shadow:0 0 0 9px rgba(var(--accent-rgb),0)}
     100%{box-shadow:0 0 0 0 rgba(var(--accent-rgb),0)}}
 
+  /* The logo, used at scale: the same two hands framing the number, so the
+     mark in the nav and the gesture around the count read as one idea. */
+  /* horizontal padding must exceed .fh width or the bracket sits on the
+     digits; at 1440 that is a 50px mark inside 68px of padding. */
+  .countframe{position:relative;display:inline-block;margin:0 0 18px;
+    padding:clamp(34px,5.6vw,78px) clamp(46px,8vw,118px)}
+  .countframe .count{margin:0}
+  .fh{position:absolute;color:var(--accent);pointer-events:none;
+    width:clamp(36px,8.8vw,128px);height:auto}
+  .fh-tl{top:0;left:0;animation:handTL .95s cubic-bezier(.22,1,.36,1) both}
+  .fh-br{bottom:0;right:0;animation:handBR .95s cubic-bezier(.22,1,.36,1) .06s both}
+  @keyframes handTL{from{opacity:0;transform:translate(-16px,-16px)}
+                    to{opacity:.9;transform:none}}
+  @keyframes handBR{from{opacity:0;transform:translate(16px,16px)}
+                    to{opacity:.9;transform:none}}
+
   .count{font-family:Space Grotesk,sans-serif;font-weight:700;
     font-size:clamp(46px,11.2vw,146px);line-height:1;letter-spacing:-.045em;
     color:var(--ink);margin:0 0 18px;
