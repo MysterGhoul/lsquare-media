@@ -76,7 +76,7 @@
   <div class="wrap" style="padding:0">
     <div class="statgrid">
       <div class="stat" style="padding-left:24px"><span class="n">2018</span><span class="l">Representing creators since</span></div>
-      <div class="stat"><span class="n" id="s-creators">--</span><span class="l">Creators represented</span></div>
+      <div class="stat"><span class="n">Private</span><span class="l">Our roster, by policy</span></div>
       <div class="stat"><span class="n">100%</span><span class="l">Creator owns their channel</span></div>
       <div class="stat"><span class="n">48h</span><span class="l">Application response</span></div>
     </div>
@@ -411,7 +411,6 @@
       perDay:   1450                                 // avg net new followers/day
     },
 
-    rosterCreators: 12,
 
     // Set this to a JSON endpoint returning {"followers": 123456} to go
     // genuinely live. Until then the number is modelled from seed + perDay.
@@ -517,7 +516,6 @@
   if (reduce) tick();
 
   /* ================= secondary numbers ================= */
-  document.getElementById("s-creators").textContent = CFG.rosterCreators;
   document.getElementById("yr").textContent         = new Date().getFullYear();
 
   /* ================= optional real live feed =================
