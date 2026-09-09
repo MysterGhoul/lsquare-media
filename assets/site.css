@@ -296,7 +296,11 @@
     display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
   @media (prefers-reduced-motion:reduce){
-    *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+    *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+    /* The live dot is the exception. It fades opacity in place and never moves,
+       so it does not cause the discomfort this setting exists to prevent, and it
+       is the only thing on the page telling a reader the count is live. */
+    .dot{animation:live 1.9s ease-in-out infinite!important}}
 
 
   /* ---------- our journey ----------
