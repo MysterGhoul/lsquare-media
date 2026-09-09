@@ -186,7 +186,7 @@
      moment and breaks up a long dark scroll. Keep it the only lime field. */
   /* Was a full-bleed field of pure accent, which is a huge area at maximum
      brightness and the single worst thing on the page for eye strain. Now a
-     dark band lit by a soft off-centre wash, so it still reads as a distinct
+     dark band lit by a soft off-center wash, so it still reads as a distinct
      section without the glare. */
   .storeband{background:var(--bg-2);padding:0;position:relative;
     border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
@@ -210,7 +210,7 @@
 
   /* ---------- brands + discretion ---------- */
   .roster{background:var(--bg-2);border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
-  /* Logo wall. Centred flex-wrap, not a grid: the brand count changes and a
+  /* Logo wall. Centered flex-wrap, not a grid: the brand count changes and a
      rigid grid leaves a ragged last row every time it does. Logos are white
      silhouettes on a common canvas height, so one CSS height balances them. */
   .brandwall{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;

@@ -179,7 +179,7 @@
     <div>
       <p class="eyebrow">The other half of the company</p>
       <h2>We build the store, too.</h2>
-      <p>Merch, digital products, print on demand, the checkout, the fulfilment, the restocks. Most creators leave money on the table because building a shop properly is a project nobody has a spare weekend for, so we build it for them. <strong style="color:var(--ink);font-weight:600">It is included at no cost for every creator we represent.</strong> Not with us? Start with a consultation and we will quote from there.</p>
+      <p>Merch, digital products, print on demand, the checkout, the fulfillment, the restocks. Most creators leave money on the table because building a shop properly is a project nobody has a spare weekend for, so we build it for them. <strong style="color:var(--ink);font-weight:600">It is included at no cost for every creator we represent.</strong> Not with us? Start with a consultation and we will quote from there.</p>
       <a class="btn" href="https://lsquare.store">See LSquare.store</a>
     </div>
     <ul class="storelist">
@@ -189,11 +189,11 @@
       </li>
       <li>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
-        <span><b>We run the boring end</b><i>Inventory, fulfilment, restocks, customer emails, returns. You approve the products; we handle everything after that.</i></span>
+        <span><b>We run the boring end</b><i>Inventory, fulfillment, restocks, customer emails, returns. You approve the products; we handle everything after that.</i></span>
       </li>
       <li>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg>
-        <span><b>Free on the roster</b><i>If we manage you, the store is part of the deal &mdash; build, fulfilment and support, at no cost. Everyone else gets a consultation and a fixed quote.</i></span>
+        <span><b>Free on the roster</b><i>If we manage you, the store is part of the deal &mdash; build, fulfillment and support, at no cost. Everyone else gets a consultation and a fixed quote.</i></span>
       </li>
     </ul>
   </div>
@@ -209,11 +209,11 @@
       <p>We do not publish our creators. We do publish who we negotiate against.</p>
     </div>
 
-    <!-- Logo wall. Each mark is the brand's own logo, normalised to a white
+    <!-- Logo wall. Each mark is the brand's own logo, normalized to a white
          silhouette on a common 96px canvas. Where a brand's mark is a GLYPH
          Every mark here is the brand's OWN official lockup including its own
          wordmark - no typeset names, so nothing is set in the wrong typeface.
-         Centred flex-wrap, not a grid: the brand count keeps changing and a
+         Centered flex-wrap, not a grid: the brand count keeps changing and a
          grid leaves a ragged last row every time it does. -->
     <div class="brandwall">
       <span class="bw"><img src="assets/logos/brands/twitch.png" alt="Twitch" loading="lazy"></span>
@@ -340,7 +340,7 @@
         <span class="tlyr">2022</span>
         <div>
           <h3>We start building storefronts</h3>
-          <p>A creator had forty thousand people who would happily have bought a shirt, and sold none, because running a shop is a second job. So we started doing that job too &mdash; design, checkout, fulfilment, restocks, customer email. It became its own arm of the company at <a href="https://lsquare.store">lsquare.store</a>.</p>
+          <p>A creator had forty thousand people who would happily have bought a shirt, and sold none, because running a shop is a second job. So we started doing that job too &mdash; design, checkout, fulfillment, restocks, customer email. It became its own arm of the company at <a href="https://lsquare.store">lsquare.store</a>.</p>
           <a class="tlink" href="/journal/storefronts/">Read why &rarr;</a>
         </div>
       </li>
@@ -503,7 +503,7 @@
 
 
     // Set this to a JSON endpoint returning {"followers": 123456} to go
-    // genuinely live. Until then the number is modelled from seed + perDay.
+    // genuinely live. Until then the number is modeled from seed + perDay.
     liveEndpoint: null,
 
     // Application form POST target. This is an OPAQUE form id from the form
@@ -518,13 +518,13 @@
   };
 
   /* ================= follower model ================= */
-  function modelled(now){
+  function modeled(now){
     var days = (now - CFG.tracked.seedAt) / 86400000;
     return CFG.tracked.seed + Math.max(0, Math.floor(days * CFG.tracked.perDay));
   }
   var liveOverride = null;   // set once a real endpoint answers
   function trackedNow(now){
-    return liveOverride !== null ? liveOverride : modelled(now);
+    return liveOverride !== null ? liveOverride : modeled(now);
   }
   function totalNow(now){ return CFG.rosterBase + trackedNow(now); }
 
