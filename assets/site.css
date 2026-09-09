@@ -298,6 +298,39 @@
   @media (prefers-reduced-motion:reduce){
     *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 
+
+  /* ---------- our journey ----------
+     A dated spine, not a decorative one: the rule and the node exist to make
+     the order readable, and every entry hands off to the full post. */
+  .tl{list-style:none;margin:0;padding:0;position:relative}
+  .tl::before{content:"";position:absolute;left:7px;top:12px;bottom:12px;width:1px;
+    background:linear-gradient(180deg,transparent,var(--line) 8%,var(--line) 92%,transparent)}
+  @media (min-width:781px){ .tl::before{left:97px} }
+  .tl li{position:relative;display:grid;grid-template-columns:1fr;gap:8px;
+    padding:0 0 34px 34px}
+  @media (min-width:781px){
+    .tl li{grid-template-columns:90px 1fr;gap:44px;padding:0 0 38px 0}
+    .tl li>div{padding-left:6px} }
+  .tl li::before{content:"";position:absolute;left:2px;top:8px;width:11px;height:11px;
+    border-radius:50%;background:var(--bg);border:1px solid var(--line)}
+  @media (min-width:781px){ .tl li::before{left:92px} }
+  /* the most recent entry is the live one */
+  .tl li:last-child::before{background:var(--accent);border-color:var(--accent);
+    box-shadow:0 0 10px rgba(var(--accent-rgb),.6)}
+  .tlyr{font-family:Space Mono,monospace;font-size:12px;font-weight:700;
+    letter-spacing:.16em;color:var(--accent);line-height:1.9;
+    font-variant-numeric:tabular-nums}
+  @media (min-width:781px){ .tlyr{text-align:right;font-size:13px} }
+  .tl h3{font-size:19px;font-weight:600;margin:0 0 8px;letter-spacing:-.015em}
+  .tl p{color:var(--dim);font-size:15px;margin:0;max-width:64ch}
+  .tl p a{color:var(--ink);border-bottom:1px solid var(--line);padding-bottom:1px}
+  .tl p a:hover{border-color:var(--accent);color:var(--accent)}
+  .tlink{display:inline-block;margin-top:11px;font-family:Space Mono,monospace;
+    font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+  .tlink:hover{color:var(--accent)}
+  .tlend{display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+    margin:10px 0 0;color:var(--dim);font-size:15px}
+
   /* ---------- journal ---------- */
   .jlist{display:flex;flex-direction:column}
   .jitem{display:grid;grid-template-columns:160px 1fr;gap:32px;padding:28px 0;
